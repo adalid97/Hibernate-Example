@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="ejemplo.Empleado" table="empleado">
+        <id name="idEmpleado" type="int">
+        	<column name="idEmpleado"/>
+            <generator class="increment" />
+        </id>
+        <many-to-one name="departamento" class="ejemplo.Departamento" fetch="select">
+            <column name="idDepartamento"/>
+        </many-to-one>
+        <property name="nombre" type="java.lang.String">
+        	<column name="nombre"/>
+        </property>	
+        <property name="apellidos" type="java.lang.String">
+        	<column name="apellidos"/>
+        </property>	
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="ejemplo.Departamento" table="departamento">
+        <id name="idDepartamento" type="int">
+        	<column name="idDepartamento"/>
+            <generator class="increment"/>
+        </id>
+        <property name="nombre" type="java.lang.String">
+        	<column name="nombre"/>
+        </property>	
+        
+        <set name="empleado" table="empleado" 
+				inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idDepartamento" not-null="true" />
+            </key>
+            <one-to-many class="ejemplo.Empleado" />
+        </set>
+        
+    </class>
+</hibernate-mapping>
